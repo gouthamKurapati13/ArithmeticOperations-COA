@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arithmetic Operations</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="https://t3.ftcdn.net/jpg/01/09/34/82/360_F_109348294_5nAXzX57wL6YJiz5sQ04wJqiWkVcN04J.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            background: url('https://static.vecteezy.com/system/resources/thumbnails/000/696/278/small/textured-black-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            color: white;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            border: solid 2px #007bff;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            padding-right: 40px;
+            border-radius: 4px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            width: 105%;
+            margin-right: none;
+        }
+
+        button[type="submit"] {
+            background-color: transparent;
+            color: #007bff;
+            border: solid 2px #007bff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 40%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        @media screen and (max-width: 992px) {
+            form {
+                width: 900px;
+                margin: 0 auto;
+                padding: 20px;
+                font-size: 32px;
+            }
+
+            label, input {
+                display: block;
+                width: 100%;
+                font-size: 32px;
+            }
+
+            select {
+            width: 100%;
+            margin-right: none;
+            font-size: 32px;
+            }
+            
+            button {
+                font-size: 48px;
+            }
+            
+
+            body {
+                min-height: 100vh;
+            }
+
+        }
+    </style>
+
+</head>
+<body>
+    <h1>FIXED POINT ARITHMETIC OPERATIONS</h1>
+    <h2>By Kurapati Goutham and S.S.Varsan</h2>
+    <form method="POST" action="/perform_operation">
+        <div class="details">
+            <label for="bits">Enter number of bits in the output:</label>
+            <input type="number" name="bits" autocomplete="off" value="{{ vals[0] }}" required><br>
+
+            <label for="num1">Enter num1 :</label>
+            <input type="number" name="num1" autocomplete="off" value="{{ vals[1] }}" required><br>
+
+            <label for="num2">Enter num2 :</label>
+            <input type="number" name="num2" autocomplete="off" value="{{ vals[2] }}" required><br>
+
+            <label for="operation">Select Operation :</label>
+            <select name="operation" value="Sub 1" required>
+                <option value="">Select here</option>
+                <option value="Add 1">Signed Magnitude Addition</option>
+                <option value="Sub 1">Signed Magnitude Subtraction</option>
+                <option value="Add 2">2's Complement Addition</option>
+                <option value="Sub 2">2's Complement Subtraction</option>
+            </select><br>
+
+        </div>
+        <button type="submit">Get Result</button>
+        <br>
+        <h3 style="text-align: center;">{{ title }}</h3>
+            <ul>
+                {% for step in steps %}
+                    <p>{{ step }}</p>
+                {% endfor %}
+            </ul>
+        
+    </form>
+</body>
+</html>
